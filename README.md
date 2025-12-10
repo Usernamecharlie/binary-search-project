@@ -47,7 +47,22 @@ To transform the abstract concept of Binary Search into a working application, I
 ### Pattern Recognition
 The core pattern of this algorithm is a repetitive **Comparison Loop** that does not change regardless of the dataset size. I identified that the algorithm relies on a single, repeatable action: calculate mid, compare, and discard. Recognizing this pattern allows the application to use a standard state-preserving loop structure. Whether the list has ten numbers or ten thousand, the application applies this exact same logic pattern until the target is found or the search space is exhausted.
 
-![Pattern Flowchart](https://mermaid.ink/img/pako:eNpVkMtqwzAQRX9FzKqF_IBCL4VCSLZtdF0YjT1qS2PLSMqWkH_vyHIehUUXgu45984M0pU1yJAj2V_1W8Wbgu-l1PCmR6_pW70D9_O9gQ-9uS84WvD5_L55PZ0Fj2S0E-jWI2iLh8ZrsN57bLzFw4B-M9CdfX-2ycb74KzyF15d-h8yqD1W-4CjD7DbaZzQ0aMeJ7h71OMEd496nODuUc8J7h_1PCH9o14npH_U64T0j3qdkP5RrxPSv6LXCekf9a0C1XN6y_f5Ax9nUqY?type=png)
+```mermaid
+flowchart TD
+    A[Start] --> B[/Input List & Target/]
+    B --> C[Validation & Sort]
+    C --> D[Init: Low=0, High=n-1]
+    D --> E{Low <= High?}
+    E -- No --> F[End: Not Found]
+    E -- Yes --> G[Calc Mid]
+    G --> H{Arr[Mid] == Target?}
+    H -- Yes --> I[End: Found Match!]
+    H -- No --> J{Arr[Mid] < Target?}
+    J -- Yes --> K[Low = Mid + 1]
+    J -- No --> L[High = Mid - 1]
+    K --> E
+    L --> E
+```
 *(Figure 1: The repeatable pattern of Binary Search)*
 
 ### Abstraction
